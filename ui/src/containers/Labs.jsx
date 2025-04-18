@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Box, Paper, Typography, ButtonGroup, Button } from "@mui/material";
 import LabOne from "./LabOne";
+import LabTwo from "./LabTwo";
+import LabThree from "./LabThree";
+import LabFour from "./LabFour";
+import LabFive from "./LabFive";
+import LabSix from "./LabSix";
+import TemplateExample from "./TemplateExample";
 
 const Labs = () => {
   const [selectedLab, setSelectedLab] = useState(0);
@@ -9,16 +15,27 @@ const Labs = () => {
     { label: "Lab One", callbackFunction: () => setSelectedLab(1) },
     { label: "Lab Two", callbackFunction: () => setSelectedLab(2) },
     { label: "Lab Three", callbackFunction: () => setSelectedLab(3) },
+    { label: "Lab Four", callbackFunction: () => setSelectedLab(4) },
+    { label: "Lab Five", callbackFunction: () => setSelectedLab(5) },
+    { label: "Lab Six", callbackFunction: () => setSelectedLab(6) },
   ];
 
   const labContentHandler = () => {
     switch (selectedLab) {
+      case 0:
+        return <TemplateExample />;
       case 1:
         return <LabOne />;
       case 2:
-        return <Typography>Nothing here</Typography>;
+        return <LabTwo />;
       case 3:
-        return <Typography>Nothing here</Typography>;
+        return <LabThree />;
+      case 4:
+        return <LabFour />;
+      case 5:
+        return <LabFive />;
+      case 6:
+        return <LabSix />;
       default:
         return <Typography>No matching lab</Typography>;
     }
@@ -38,7 +55,11 @@ const Labs = () => {
       </Box>
 
       <Box height={"400px"}>
-        <Paper sx={{ height: "inherit" }}>{labContentHandler()}</Paper>
+        <Paper
+          sx={{ height: "inherit", overflow: "scroll", overflowX: "hidden" }}
+        >
+          {labContentHandler()}
+        </Paper>
       </Box>
     </Box>
   );
